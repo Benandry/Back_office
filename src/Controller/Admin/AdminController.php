@@ -73,6 +73,26 @@ class AdminController extends AbstractDashboardController
         ]);
     }
 
+    #[Route('/admin/staff/edit/{id<\d+>}', name: 'app_staff_new')]
+    public function editStaff(Request $request, EntityManagerInterface $em): Response
+    {
+
+        $staff = new Staff();
+        $form = $this->createForm(StaffFormType::class, $staff);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em->persist($staff);
+            $em->flush();
+            return $this->redirectToRoute('app_staff_index');
+        }
+
+        return $this->renderForm('admin/staff/new.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
