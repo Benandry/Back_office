@@ -1,0 +1,35 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+{% block content_title %}New Staff
+{% endblock %}
+
+{% block page_actions %}
+	<a class="btn btn-primary" href="...">Some Action</a>
+{% endblock %}
+
+{% block main %}
+	{{ form_start(form) }}
+	<div class="my-custom-class-for-errors">
+		{{ form_errors(form) }}
+	</div>
+
+	<div class="row">
+		<div class="col-md-6">
+			{{ form_row(form.firstname) }}
+			{{ form_row(form.lastname) }}
+			{{ form_row(form.birth_) }}
+			{{ form_row(form.number_cin) }}
+		</div>
+		<div class="col-md-6" id="some-custom-id">
+			{{ form_row(form.number_matricule) }}
+			{{ form_row(form.adresse_exact) }}
+			{{ form_row(form.work_post) }}
+		</div>
+	</div>
+	<div class="row d-flex justify-content-start">
+		<div class="col-md-12">
+			{{ form_row(form.submit) }}
+		</div>
+	</div>
+
+	{{ form_end(form) }}
+{% endblock %}
