@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContratController!{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row ">
+        <div class="d-flex justify-content-end">
+            <a href="{{ path('app_contrat_new') }}" class=" btn btn-primary">
+                Create Contrat
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <table id="table-search" class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nom du contrat </th>
+                    <th scope="col">Description </th>
+                    <th scope="col">Actions </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contrat in contrats %}
+                <tr>
+                    <td>{{ contrat.name }} </td>
+                    <td>{{ contrat.description }} </td>
+                    <td>
+                        <div class="row">
+                            <div class="col-6"> <a href="#" class="btn btn-info btn-sm"> Editer</a> </div>
+                            <div class="col-6"> <a href="#" class="btn btn-danger btn-sm"> Supprimer</a> </div>
+
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ContratRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ContratRepository::class)]
@@ -19,8 +21,13 @@ class Contrat
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\ManyToOne(inversedBy: 'contrat_type')]
-    private ?Staff $staff = null;
+    #[ORM\OneToMany(mappedBy: 'contratType', targetEntity: Staff::class)]
+    private Collection $staff;
+
+    public function __construct()
+    {
+        $this->staff = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -51,14 +58,32 @@ class Contrat
         return $this;
     }
 
-    public function getStaff(): ?Staff
+    /**
+     * @return Collection<int, Staff>
+     */
+    public function getStaff(): Collection
     {
         return $this->staff;
     }
 
-    public function setStaff(?Staff $staff): static
+    public function addStaff(Staff $staff): static
     {
-        $this->staff = $staff;
+        if (!$this->staff->contains($staff)) {
+            $this->staff->add($staff);
+            $staff->setContratType($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStaff(Staff $staff): static
+    {
+        if ($this->staff->removeElement($staff)) {
+            // set the owning side to null (unless already changed)
+            if ($staff->getContratType() === $this) {
+                $staff->setContratType(null);
+            }
+        }
 
         return $this;
     }

@@ -1,0 +1,6 @@
+default:
+  suites:
+    create_new_demande:
+      contexts: -""
+      paths:
+        - "%paths.base%/features/create_demande"

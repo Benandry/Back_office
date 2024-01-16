@@ -2,13 +2,14 @@
 
 namespace App\Form;
 
+use App\Entity\Contrat;
 use App\Entity\Staff;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class StaffFormType extends AbstractType
+class StaffType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -20,8 +21,23 @@ class StaffFormType extends AbstractType
             ->add('number_matricule')
             ->add('adresse_exact')
             ->add('work_post')
-            ->add('submit', SubmitType::class, [
-                'label' => 'New Staff'
+            ->add('phone_number')
+            ->add('situation_family')
+            ->add('civility')
+            ->add('nationality')
+            ->add('email')
+            ->add('code_postal')
+            ->add('number_child')
+            ->add('lieu')
+            ->add('salary_base')
+            ->add('date_begin')
+            ->add('date_end')
+            ->add('hours_per_week')
+            ->add('day_per_week')
+            ->add('horary')
+            ->add('contratType', EntityType::class, [
+                'class' => Contrat::class,
+                'choice_label' => 'name',
             ]);
     }
 
