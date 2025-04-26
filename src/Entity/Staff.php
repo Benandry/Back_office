@@ -69,10 +69,6 @@ class Staff
 
     #[ORM\Column]
     private ?float $salary_base = null;
-
-    #[ORM\OneToMany(mappedBy: 'staff', targetEntity: contrat::class)]
-    private Collection $contrat_type;
-
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_begin = null;
 
@@ -92,7 +88,6 @@ class Staff
     {
         $this->departement = new ArrayCollection();
         $this->responsable = new ArrayCollection();
-        $this->contrat_type = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -352,35 +347,6 @@ class Staff
         return $this;
     }
 
-    /**
-     * @return Collection<int, contrat>
-     */
-    public function getContratType(): Collection
-    {
-        return $this->contrat_type;
-    }
-
-    public function addContratType(contrat $contratType): static
-    {
-        if (!$this->contrat_type->contains($contratType)) {
-            $this->contrat_type->add($contratType);
-            $contratType->setStaff($this);
-        }
-
-        return $this;
-    }
-
-    public function removeContratType(contrat $contratType): static
-    {
-        if ($this->contrat_type->removeElement($contratType)) {
-            // set the owning side to null (unless already changed)
-            if ($contratType->getStaff() === $this) {
-                $contratType->setStaff(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getDateBegin(): ?\DateTimeInterface
     {

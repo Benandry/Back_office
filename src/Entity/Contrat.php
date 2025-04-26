@@ -19,9 +19,6 @@ class Contrat
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\ManyToOne(inversedBy: 'contrat_type')]
-    private ?Staff $staff = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -47,18 +44,6 @@ class Contrat
     public function setDescription(string $description): static
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getStaff(): ?Staff
-    {
-        return $this->staff;
-    }
-
-    public function setStaff(?Staff $staff): static
-    {
-        $this->staff = $staff;
 
         return $this;
     }

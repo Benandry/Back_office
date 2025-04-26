@@ -1,106 +1,107 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Staff{% endblock %}
+{% block title %}Staff
+{% endblock %}
 
 {% block body %}
-    <h1>Staff</h1>
+	<h1>Staff</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ staff.id }}</td>
-            </tr>
-            <tr>
-                <th>Firstname</th>
-                <td>{{ staff.firstname }}</td>
-            </tr>
-            <tr>
-                <th>Lastname</th>
-                <td>{{ staff.lastname }}</td>
-            </tr>
-            <tr>
-                <th>Birth_</th>
-                <td>{{ staff.birth ? staff.birth|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Number_cin</th>
-                <td>{{ staff.numberCin }}</td>
-            </tr>
-            <tr>
-                <th>Number_matricule</th>
-                <td>{{ staff.numberMatricule }}</td>
-            </tr>
-            <tr>
-                <th>Adresse_exact</th>
-                <td>{{ staff.adresseExact }}</td>
-            </tr>
-            <tr>
-                <th>Work_post</th>
-                <td>{{ staff.workPost }}</td>
-            </tr>
-            <tr>
-                <th>Phone_number</th>
-                <td>{{ staff.phoneNumber }}</td>
-            </tr>
-            <tr>
-                <th>Situation_family</th>
-                <td>{{ staff.situationFamily }}</td>
-            </tr>
-            <tr>
-                <th>Civility</th>
-                <td>{{ staff.civility }}</td>
-            </tr>
-            <tr>
-                <th>Nationality</th>
-                <td>{{ staff.nationality }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ staff.email }}</td>
-            </tr>
-            <tr>
-                <th>Code_postal</th>
-                <td>{{ staff.codePostal }}</td>
-            </tr>
-            <tr>
-                <th>Number_child</th>
-                <td>{{ staff.numberChild }}</td>
-            </tr>
-            <tr>
-                <th>Lieu</th>
-                <td>{{ staff.lieu }}</td>
-            </tr>
-            <tr>
-                <th>Salary_base</th>
-                <td>{{ staff.salaryBase }}</td>
-            </tr>
-            <tr>
-                <th>Date_begin</th>
-                <td>{{ staff.dateBegin ? staff.dateBegin|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Date_end</th>
-                <td>{{ staff.dateEnd ? staff.dateEnd|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Hours_per_week</th>
-                <td>{{ staff.hoursPerWeek }}</td>
-            </tr>
-            <tr>
-                <th>Day_per_week</th>
-                <td>{{ staff.dayPerWeek }}</td>
-            </tr>
-            <tr>
-                <th>Horary</th>
-                <td>{{ staff.horary ? staff.horary|date('H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ staff.id }}</td>
+			</tr>
+			<tr>
+				<th>Firstname</th>
+				<td>{{ staff.firstname }}</td>
+			</tr>
+			<tr>
+				<th>Lastname</th>
+				<td>{{ staff.lastname }}</td>
+			</tr>
+			<tr>
+				<th>Birth_</th>
+				<td>{{ staff.birth ? staff.birth|date('Y-m-d') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Number_cin</th>
+				<td>{{ staff.numberCin }}</td>
+			</tr>
+			<tr>
+				<th>Number_matricule</th>
+				<td>{{ staff.numberMatricule }}</td>
+			</tr>
+			<tr>
+				<th>Adresse_exact</th>
+				<td>{{ staff.adresseExact }}</td>
+			</tr>
+			<tr>
+				<th>Work_post</th>
+				<td>{{ staff.workPost }}</td>
+			</tr>
+			<tr>
+				<th>Phone_number</th>
+				<td>{{ staff.phoneNumber }}</td>
+			</tr>
+			<tr>
+				<th>Situation_family</th>
+				<td>{{ staff.situationFamily }}</td>
+			</tr>
+			<tr>
+				<th>Civility</th>
+				<td>{{ staff.civility }}</td>
+			</tr>
+			<tr>
+				<th>Nationality</th>
+				<td>{{ staff.nationality }}</td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td>{{ staff.email }}</td>
+			</tr>
+			<tr>
+				<th>Code_postal</th>
+				<td>{{ staff.codePostal }}</td>
+			</tr>
+			<tr>
+				<th>Number_child</th>
+				<td>{{ staff.numberChild }}</td>
+			</tr>
+			<tr>
+				<th>Lieu</th>
+				<td>{{ staff.lieu }}</td>
+			</tr>
+			<tr>
+				<th>Salary_base</th>
+				<td>{{ staff.salaryBase }}</td>
+			</tr>
+			<tr>
+				<th>Date_begin</th>
+				<td>{{ staff.dateBegin ? staff.dateBegin|date('Y-m-d') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Date_end</th>
+				<td>{{ staff.dateEnd ? staff.dateEnd|date('Y-m-d') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Hours_per_week</th>
+				<td>{{ staff.hoursPerWeek }}</td>
+			</tr>
+			<tr>
+				<th>Day_per_week</th>
+				<td>{{ staff.dayPerWeek }}</td>
+			</tr>
+			<tr>
+				<th>Horary</th>
+				<td>{{ staff.horary ? staff.horary|date('H:i:s') : '' }}</td>
+			</tr>
+		</tbody>
+	</table>
 
-    <a href="{{ path('app_staff_index') }}">back to list</a>
+	<a href="{{ path('app_staff.index') }}">back to list</a>
 
-    <a href="{{ path('app_staff_edit', {'id': staff.id}) }}">edit</a>
+	<a href="{{ path('app_staff.edit', {'id': staff.id}) }}">edit</a>
 
-    {{ include('staff/_delete_form.html.twig') }}
+	{{ include('staff/_delete_form.html.twig') }}
 {% endblock %}

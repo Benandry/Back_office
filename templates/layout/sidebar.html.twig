@@ -3,11 +3,11 @@
 		<h2 class="text-white text-xl font-bold">RH<span class="text-blue-400">digit</span>
 		</h2>
 	</div>
-
+	{% set current_path = app.request.get('_route') %}
 	<nav class="mt-6 px-4">
 		<div class="space-y-2">
-			<a href="#" class="flex items-center gap-3 px-4 py-3 bg-blue-900/30 text-blue-300 rounded-lg">
-				<i class="fas fa-home h-5 w-5 text-blue-300"></i>
+			<a href="{{path('app_home') }}" class="flex items-center gap-3 px-4 py-3  {{ current_path == 'app_home' ? 'bg-blue-900/30 text-blue-300' : 'text-gray-300'}}  rounded-lg">
+				<i class="fas fa-home h-5 w-5 "></i>
 				<span class="font-medium">Dashboard</span>
 			</a>
 			<a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-gray-800/30 hover:text-white rounded-lg transition-colors">
@@ -18,10 +18,17 @@
 				<i class="fas fa-database h-5 w-5 text-gray-300"></i>
 				<span class="font-medium">Responsables</span>
 			</a>
-			<a href="{{ path('app_staff.index') }}" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-gray-800/30 hover:text-white rounded-lg transition-colors">
-				<i class="fas fa-user h-5 w-5 text-gray-300"></i>
+			<a href="{{ path('app_staff.index') }}" class="flex items-center gap-3 px-4 py-3 {{ current_path starts with 'app_staff.' ? 'bg-blue-900/30 text-blue-300' : 'text-gray-300'}} hover:bg-gray-800/30 hover:text-white rounded-lg transition-colors">
+				<i class="fas fa-user h-5 w-5 "></i>
 				<span class="font-medium">Staff</span>
 			</a>
+
+			<a href="{{ path('app_contrat.index') }}" class="flex items-center gap-3 px-4 py-3 {{ current_path starts with 'app_contrat.' ? 'bg-blue-900/30 text-blue-300' : 'text-gray-300'}} hover:bg-gray-800/30 hover:text-white rounded-lg transition-colors">
+
+				<i class="fas fa-file-contract h-5 w-5 "></i>
+				<span class="font-medium">Contrat</span>
+			</a>
+
 
 			<a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-gray-800/30 hover:text-white rounded-lg transition-colors">
 				<i class="fas fa-cog h-5 w-5 text-gray-300"></i>

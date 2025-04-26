@@ -53,7 +53,7 @@ class StaffController extends AbstractController
     #[Route('/{id}/edit', name: 'edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Staff $staff, EntityManagerInterface $entityManager): Response
     {
-        dd($staff);
+
         $form = $this->createForm(StaffType::class, $staff);
         $form->handleRequest($request);
 
