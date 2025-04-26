@@ -19,53 +19,53 @@
 		{% endblock %}
 	</head>
 
-	<body class="bg-gray-50">
+	<body class="bg-gradient-to-br from-gray-100 to-blue-300 "></body>
+
+	<div
+		class="flex min-h-screen">
+		<!-- Sidebar -->
+		{{ include('layout/sidebar.html.twig') }}
+
+		<!-- Main Content -->
 		<div
-			class="flex min-h-screen">
-			<!-- Sidebar -->
-			{{ include('layout/sidebar.html.twig') }}
-
-			<!-- Main Content -->
-			<div
-				class="ml-64 flex-1">
-				<!-- Navbar -->
-				<header class="bg-white shadow-sm sticky top-0">
-					<div class="flex justify-between items-center px-8 py-4">
-						<div class="flex items-center gap-6">
-							<button class="text-gray-600 lg:hidden">
-								<i class="h-6 w-6" data-feather="menu"></i>
-							</button>
-							<div class="relative">
-								<input type="text" placeholder="Rechercher..." class="pl-10 pr-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-64">
-								<i class="h-4 w-4 absolute left-3 top-3 text-gray-400" data-feather="search"></i>
-							</div>
-						</div>
-
-						<div class="flex items-center gap-4">
-							<button class="text-gray-600 relative hover:text-gray-800">
-								<i class="h-6 w-6" data-feather="bell"></i>
-								<span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
-							</button>
-							<div class="h-8 w-px bg-gray-200"></div>
-							<div class="flex items-center gap-2">
-								<img src="https://via.placeholder.com/40" alt="Profile" class="rounded-full w-8 h-8">
-								<span class="text-gray-700">Admin User</span>
-								<i class="h-5 w-5 text-gray-500" data-feather="chevron-down"></i>
-							</div>
+			class="ml-64 flex-1">
+			<!-- Navbar -->
+			<header class="bg-white shadow-sm sticky top-0">
+				<div class="flex justify-between items-center px-8 py-4">
+					<div class="flex items-center gap-6">
+						<button class="text-gray-600 lg:hidden">
+							<i class="h-6 w-6" data-feather="menu"></i>
+						</button>
+						<div class="relative">
+							<input type="text" placeholder="Rechercher..." class="pl-10 pr-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-64">
+							<i class="h-4 w-4 absolute left-3 top-3 text-gray-400" data-feather="search"></i>
 						</div>
 					</div>
-				</header>
 
-				<!-- Content -->
-				<main class="p-8">
-					<div class="bg-white rounded-xl shadow-sm p-6">
-						{% block body %}
-							<h1 class="text-2xl font-bold text-gray-800 mb-4">Tableau de bord</h1>
-							<p class="text-gray-600">Bienvenue dans votre interface d'administration</p>
-						{% endblock %}
+					<div class="flex items-center gap-4">
+						<button class="text-gray-600 relative hover:text-gray-800">
+							<i class="h-6 w-6" data-feather="bell"></i>
+							<span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+						</button>
+						<div class="h-8 w-px bg-gray-200"></div>
+						<div class="flex items-center gap-2">
+							<img src="https://via.placeholder.com/40" alt="Profile" class="rounded-full w-8 h-8">
+							<span class="text-gray-700">Admin User</span>
+							<i class="h-5 w-5 text-gray-500" data-feather="chevron-down"></i>
+						</div>
 					</div>
-				</main>
-			</div>
+				</div>
+			</header>
+
+			<!-- Content -->
+			<main class="p-8">
+				<div class="bg-white rounded-xl shadow-sm p-6">
+					{% block body %}
+						<h1 class="text-2xl font-bold text-gray-800 mb-4">Tableau de bord</h1>
+						<p class="text-gray-600">Bienvenue dans votre interface d'administration</p>
+					{% endblock %}
+				</div>
+			</main>
 		</div>
-	</body>
-</html>
+	</div>
+</html></body></html>
