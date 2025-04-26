@@ -1,19 +1,71 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Admin Dashboard
+			{% endblock %}
+		</title>
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+			<script src="https://cdn.tailwindcss.com"></script>
+			<link href="https://unpkg.com/heroicons@4.5.0/24/outline" rel="stylesheet">
+		{% endblock %}
+
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</head>
+
+	<body class="bg-gray-50">
+		<div
+			class="flex min-h-screen">
+			<!-- Sidebar -->
+			{{ include('layout/sidebar.html.twig') }}
+
+			<!-- Main Content -->
+			<div
+				class="ml-64 flex-1">
+				<!-- Navbar -->
+				<header class="bg-white shadow-sm sticky top-0">
+					<div class="flex justify-between items-center px-8 py-4">
+						<div class="flex items-center gap-6">
+							<button class="text-gray-600 lg:hidden">
+								<i class="h-6 w-6" data-feather="menu"></i>
+							</button>
+							<div class="relative">
+								<input type="text" placeholder="Rechercher..." class="pl-10 pr-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-64">
+								<i class="h-4 w-4 absolute left-3 top-3 text-gray-400" data-feather="search"></i>
+							</div>
+						</div>
+
+						<div class="flex items-center gap-4">
+							<button class="text-gray-600 relative hover:text-gray-800">
+								<i class="h-6 w-6" data-feather="bell"></i>
+								<span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+							</button>
+							<div class="h-8 w-px bg-gray-200"></div>
+							<div class="flex items-center gap-2">
+								<img src="https://via.placeholder.com/40" alt="Profile" class="rounded-full w-8 h-8">
+								<span class="text-gray-700">Admin User</span>
+								<i class="h-5 w-5 text-gray-500" data-feather="chevron-down"></i>
+							</div>
+						</div>
+					</div>
+				</header>
+
+				<!-- Content -->
+				<main class="p-8">
+					<div class="bg-white rounded-xl shadow-sm p-6">
+						{% block body %}
+							<h1 class="text-2xl font-bold text-gray-800 mb-4">Tableau de bord</h1>
+							<p class="text-gray-600">Bienvenue dans votre interface d'administration</p>
+						{% endblock %}
+					</div>
+				</main>
+			</div>
+		</div>
+	</body>
 </html>
