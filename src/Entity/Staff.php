@@ -43,8 +43,8 @@ class Staff
     #[ORM\Column(length: 255)]
     private ?string $situation_family = null;
 
-    #[ORM\Column]
-    private ?int $civility = null;
+    #[ORM\Column(length: 255)]
+    private ?string $civility = null;
 
     #[ORM\Column(length: 255)]
     private ?string $nationality = null;
@@ -208,12 +208,12 @@ class Staff
         return $this;
     }
 
-    public function getCivility(): ?int
+    public function getCivility(): ?string
     {
         return $this->civility;
     }
 
-    public function setCivility(int $civility): static
+    public function setCivility(string $civility): static
     {
         $this->civility = $civility;
 
