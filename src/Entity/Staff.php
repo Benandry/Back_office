@@ -57,10 +57,6 @@ class Staff
 
     #[ORM\Column]
     private ?int $number_child = null;
-
-    #[ORM\OneToMany(mappedBy: 'staff', targetEntity: Departement::class, orphanRemoval: true)]
-    private Collection $departement;
-
     #[ORM\OneToMany(mappedBy: 'staff', targetEntity: Responsable::class, orphanRemoval: true)]
     private Collection $responsable;
 
@@ -86,7 +82,6 @@ class Staff
 
     public function __construct()
     {
-        $this->departement = new ArrayCollection();
         $this->responsable = new ArrayCollection();
     }
 
@@ -266,32 +261,6 @@ class Staff
     /**
      * @return Collection<int, Departement>
      */
-    public function getDepartement(): Collection
-    {
-        return $this->departement;
-    }
-
-    public function addDepartement(Departement $departement): static
-    {
-        if (!$this->departement->contains($departement)) {
-            $this->departement->add($departement);
-            $departement->setStaff($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDepartement(Departement $departement): static
-    {
-        if ($this->departement->removeElement($departement)) {
-            // set the owning side to null (unless already changed)
-            if ($departement->getStaff() === $this) {
-                $departement->setStaff(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Responsable>

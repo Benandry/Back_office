@@ -16,9 +16,6 @@ class Departement
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\ManyToOne(inversedBy: 'departement')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Staff $staff = null;
 
     public function getId(): ?int
     {
@@ -33,18 +30,6 @@ class Departement
     public function setName(string $name): static
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getStaff(): ?Staff
-    {
-        return $this->staff;
-    }
-
-    public function setStaff(?Staff $staff): static
-    {
-        $this->staff = $staff;
 
         return $this;
     }
