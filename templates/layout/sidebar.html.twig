@@ -31,12 +31,10 @@
 				<span class="font-medium">Contrat</span>
 			</a>
 
-
-			<a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-gray-800/30 hover:text-white rounded-lg transition-colors">
-				<i class="fas fa-cog h-5 w-5 text-gray-300"></i>
-				<span class="font-medium">Paramètres</span>
+			<a href="{{ path('app_poste.index') }}" class="flex items-center gap-3 px-4 py-3 {{ current_path starts with 'app_poste.' ? 'bg-blue-900/30 text-blue-300' : 'text-gray-300'}} hover:bg-gray-800/30 hover:text-white rounded-lg transition-colors">
+				<i class="fas fa-briefcase h-5 w-5"></i>
+				<span class="font-medium">Poste</span>
 			</a>
-
 		</div>
 
 		<div class="absolute bottom-0 w-full left-0 p-4 border-t border-gray-700">
