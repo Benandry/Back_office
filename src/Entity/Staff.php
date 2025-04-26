@@ -57,8 +57,6 @@ class Staff
 
     #[ORM\Column]
     private ?int $number_child = null;
-    #[ORM\OneToMany(mappedBy: 'staff', targetEntity: Responsable::class, orphanRemoval: true)]
-    private Collection $responsable;
 
     #[ORM\Column(length: 255)]
     private ?string $lieu = null;
@@ -80,10 +78,6 @@ class Staff
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $horary = null;
 
-    public function __construct()
-    {
-        $this->responsable = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -254,40 +248,6 @@ class Staff
     public function setNumberChild(int $number_child): static
     {
         $this->number_child = $number_child;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Departement>
-     */
-
-    /**
-     * @return Collection<int, Responsable>
-     */
-    public function getResponsable(): Collection
-    {
-        return $this->responsable;
-    }
-
-    public function addResponsable(Responsable $responsable): static
-    {
-        if (!$this->responsable->contains($responsable)) {
-            $this->responsable->add($responsable);
-            $responsable->setStaff($this);
-        }
-
-        return $this;
-    }
-
-    public function removeResponsable(Responsable $responsable): static
-    {
-        if ($this->responsable->removeElement($responsable)) {
-            // set the owning side to null (unless already changed)
-            if ($responsable->getStaff() === $this) {
-                $responsable->setStaff(null);
-            }
-        }
 
         return $this;
     }
