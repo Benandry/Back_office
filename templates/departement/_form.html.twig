@@ -1,9 +1,4 @@
 {{ form_start(form) }}
 {{ form_widget(form) }}
-<div class="flex justify-center mt-8">
-	<button type="submit" class="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 text-lg font-medium">
-		{{ button_label|default('Enregistrer') }}
-	</button>
-</div>
-
+{{ include('utils/submit_button.html.twig') }}
 {{ form_end(form) }}
