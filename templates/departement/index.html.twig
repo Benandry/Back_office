@@ -29,10 +29,11 @@
 						{% for departement in departements %}
 							<tr class="hover:bg-gray-50 transition-colors">
 								<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ departement.name }}</td>
-								<td class="px-6 py-4 whitespace-nowrap text-sm space-x-2">
+								<td class="px-6 py-4 whitespace-nowrap text-sm space-x-2 flex items-center">
 									<a href="{{ path('app_departement.edit', {'id': departement.id}) }}" class="text-green-600 hover:text-green-900 inline-flex items-center gap-1">
-										<i class="fas fa-edit text-xs"></i>
+										<i class="fas fa-edit text-xs mr-2"></i>
 									</a>
+									{{ include('departement/_delete_form.html.twig') }}
 								</td>
 							</tr>
 						{% else %}
