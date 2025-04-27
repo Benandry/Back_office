@@ -1,0 +1,28 @@
+{{ form_start(form) }}
+<div
+	class="flex flex-wrap gap-4">
+	<!-- Première colonne -->
+	<div class="flex-1 min-w-[300px]">
+		{{ form_row(form.firstname) }}
+		{{ form_row(form.lastname) }}
+		{{ form_row(form.phoneNumber) }}
+
+		{{ form_row(form.cin) }}
+		{{ form_row(form.dateOfBirth) }}
+	</div>
+
+	<!-- Deuxième colonne -->
+	<div class="flex-1 min-w-[300px]">
+		{{ form_row(form.adresse) }}
+		{{ form_row(form.salary) }}
+		{{ form_row(form.poste) }}
+		{{ form_row(form.contrat) }}
+	</div>
+</div>
+
+<div class="mt-8">
+	<button type="submit" class="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 text-lg font-medium">
+		{{ button_label|default('Enregistrer') }}
+	</button>
+</div>
+{{ form_end(form) }}

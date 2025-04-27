@@ -10,7 +10,7 @@
 				<i class="fas fa-home h-5 w-5 "></i>
 				<span class="font-medium">Dashboard</span>
 			</a>
-			<a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-gray-800/30 hover:text-white rounded-lg transition-colors">
+			<a href="{{ path('app_employee.index') }}" class="flex items-center gap-3 px-4 py-3 {{ current_path starts with 'app_employee.' ? 'bg-blue-900/30 text-blue-300' : 'text-gray-300'}} hover:bg-gray-800/30 hover:text-white rounded-lg transition-colors">
 				<i class="fas fa-users h-5 w-5 text-gray-300"></i>
 				<span class="font-medium">Employés</span>
 			</a>
