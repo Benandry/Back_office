@@ -59,7 +59,7 @@ class EmployeeController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
-
+            // dd($employee->getImageName());
             return $this->redirectToRoute('app_employee.index', [], Response::HTTP_SEE_OTHER);
         }
 

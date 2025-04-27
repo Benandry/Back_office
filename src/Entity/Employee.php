@@ -3,10 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\EmployeeRepository;
-use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 
 #[ORM\Entity(repositoryClass: EmployeeRepository::class)]
+#[Vich\Uploadable()]
+#[ORM\HasLifecycleCallbacks]
 class Employee
 {
     #[ORM\Id]
@@ -42,6 +46,17 @@ class Employee
 
     #[ORM\Column]
     private ?\DateTimeImmutable $dateOfBirth = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $imageName = null;
+
+    #[Vich\UploadableField(mapping: 'employees', fileNameProperty: 'imageName')]
+    #[Assert\Image()]
+    private ?File $imageFile = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
+
 
     public function getId(): ?int
     {
@@ -154,5 +169,45 @@ class Employee
         $this->dateOfBirth = $dateOfBirth;
 
         return $this;
+    }
+
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
+    public function setImageFile(?File $imageFile = null): static
+    {
+        $this->imageFile = $imageFile;
+        return $this;
+    }
+
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): static
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    #[ORM\PreUpdate]
+    public function setUpdatedAtValue(): void
+    {
+        $this->updatedAt = new \DateTimeImmutable();
     }
 }
