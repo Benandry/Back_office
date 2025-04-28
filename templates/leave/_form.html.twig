@@ -1,0 +1,21 @@
+{{ form_start(form) }}
+
+<div
+	class="flex justify-between items-start flex-wrap gap-4">
+	<!-- Première colonne -->
+	<div class="flex-1">
+		{{ form_row(form.status) }}
+		{{ form_row(form.numberOfDay) }}
+		{{ form_row(form.employee) }}
+
+	</div>
+
+	<!-- Deuxième colonne -->
+	<div class="flex-1">
+		{{ form_row(form.staredAt) }}
+		{{ form_row(form.motif) }}
+	</div>
+</div>
+
+{{ include('utils/submit_button.html.twig') }}
+{{ form_end(form) }}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Leave{% endblock %}
+
+{% block body %}
+    <h1>Leave</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ leave.id }}</td>
+            </tr>
+            <tr>
+                <th>StaredAt</th>
+                <td>{{ leave.staredAt ? leave.staredAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>NumberOfDay</th>
+                <td>{{ leave.numberOfDay }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ leave.status }}</td>
+            </tr>
+            <tr>
+                <th>Motif</th>
+                <td>{{ leave.motif }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_leave_index') }}">back to list</a>
+
+    <a href="{{ path('app_leave_edit', {'id': leave.id}) }}">edit</a>
+
+    {{ include('leave/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}
+	- Modification d'un congé
+{% endblock %}
+{% block body %}
+	<div class="p-8">
+		<div class="flex justify-between items-center mb-8">
+			<h1 class="text-2xl font-bold text-gray-800">
+				Modification d'un congé
+			</h1>
+			<a href="{{ path('app_leave.index') }}" class=" text-blue-600 px-4 py-2 rounded-lg  transition duration-300 flex items-center gap-2">
+				<i class="fas fa-arrow-left"></i>
+				Retour à la liste
+			</a>
+		</div>
+
+		<div class="bg-white rounded-xl shadow-sm p-6">
+			{{ include('leave/_form.html.twig') }}
+		</div>
+	</div>
+{% endblock %}

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EmployeeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
@@ -56,6 +58,14 @@ class Employee
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
+
+    #[ORM\OneToMany(mappedBy: 'employee', targetEntity: Leave::class, orphanRemoval: true)]
+    private Collection $leaves;
+
+    public function __construct()
+    {
+        $this->leaves = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -209,5 +219,35 @@ class Employee
     public function setUpdatedAtValue(): void
     {
         $this->updatedAt = new \DateTimeImmutable();
+    }
+
+    /**
+     * @return Collection<int, Leave>
+     */
+    public function getLeaves(): Collection
+    {
+        return $this->leaves;
+    }
+
+    public function addLeaf(Leave $leaf): static
+    {
+        if (!$this->leaves->contains($leaf)) {
+            $this->leaves->add($leaf);
+            $leaf->setEmployee($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLeaf(Leave $leaf): static
+    {
+        if ($this->leaves->removeElement($leaf)) {
+            // set the owning side to null (unless already changed)
+            if ($leaf->getEmployee() === $this) {
+                $leaf->setEmployee(null);
+            }
+        }
+
+        return $this;
     }
 }
