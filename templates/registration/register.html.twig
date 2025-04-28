@@ -1,23 +1,82 @@
-{% extends 'base.html.twig' %}
+{% extends "base_client.html.twig" %}
 
-{% block title %}Register{% endblock %}
+{% block title %}
+	Inscription
+	{{ parent() }}
+{% endblock %}
 
-{% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
+{% block content %}
 
-    <h1>Register</h1>
 
-    {{ form_errors(registrationForm) }}
+	<div class="w-full max-w-lg rounded-2xl shadow-2xl p-8 space-y-6 backdrop-blur-sm bg-white/2 border border-white/20 text-white animate-fade-in-up">
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+		{% for flash_error in app.flashes('verify_email_error') %}
+			<div class="p-4 bg-red-500/30 text-red-200 rounded-lg border border-red-300/50 backdrop-blur-sm">
+				{{ flash_error }}
+			</div>
+		{% endfor %}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+		<div class="text-center space-y-2">
+			<h1 class="text-white text-3xl font-bold">RH<span class="text-blue-400">digit</span>
+			</h1>
+			<p class="text-gray-300">
+				<span>Vous avez déjà un compte ?</span>
+				<a href="{{path('app_login')}}" class="text-blue-400">Se connecter</a>
+			</p>
+
+		</div>
+
+		{{ form_start(registrationForm) }}
+
+		<div class="space-y-4">
+			<div>
+				{{ form_label(registrationForm.username) }}
+				{{ form_widget(registrationForm.username) }}
+				{{ form_errors(registrationForm.username) }}
+			</div>
+			<div>
+				{{ form_label(registrationForm.email) }}
+				{{ form_widget(registrationForm.email) }}
+				{{ form_errors(registrationForm.email) }}
+			</div>
+
+			<div>
+				{{ form_label(registrationForm.plainPassword) }}
+				{{ form_widget(registrationForm.plainPassword) }}
+				{{ form_errors(registrationForm.plainPassword) }}
+			</div>
+
+			<div class="flex items-center my-4">
+				{{ form_widget(registrationForm.agreeTerms) }}
+				{{ form_label(registrationForm.agreeTerms) }}
+				{{ form_errors(registrationForm.agreeTerms) }}
+			</div>
+		</div>
+
+		<button type="submit" class="w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium rounded-lg hover:from-blue-700 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all shadow-md">
+			S'inscrire
+		</button>
+
+		{{ form_end(registrationForm) }}
+
+	</div>
+
+	<style>
+		/* Animation fade-in-up simple */
+		@keyframes fade-in-up {
+			0% {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+			100% {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.animate-fade-in-up {
+			animation: fade-in-up 0.6s ease-out;
+		}
+	</style>
+
 {% endblock %}

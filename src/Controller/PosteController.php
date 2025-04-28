@@ -6,11 +6,14 @@ use App\Entity\Poste;
 use App\Form\PosteType;
 use App\Repository\PosteRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
+#[IsGranted('IS_AUTHENTICATED_FULLY')]
 #[Route('/admin/poste', name: 'app_poste.')]
 class PosteController extends AbstractController
 {
